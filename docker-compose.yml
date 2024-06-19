@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    build: ./db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+  maxscale:
+    build: ./maxscale
+    links:
+      - db
+  keycloak:
+    build: ./keycloak
+    command: start-dev
+  backend:
+    build: ./backend
+    links:
+      - db
+    ports:
+      - 5000:5000
+  # frontend:
+  #   build: ./frontend
+  #   ports:
+  #     - 3000:3000
+  #   links:
+  #     - backend

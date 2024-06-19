@@ -1,0 +1,13 @@
+[mysqld]
+# Galera Provider Configuration
+wsrep_on=ON
+wsrep_provider=/usr/lib/galera/libgalera_smm.so
+# Galera Cluster Configuration
+wsrep_cluster_name="test_cluster"
+wsrep_cluster_address="gcomm://"
+# Galera Synchronization Configuration
+wsrep_sst_method=rsync
+# Galera Node Configuration
+wsrep_node_address="node1"
+wsrep_node_name="node1"
+binlog_format=ROW
